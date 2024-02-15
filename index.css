@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inder&family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&family=Newsreader:opsz,wght@6..72,800&family=Poppins:wght@300;500;700;900&family=Quicksand&family=Sofia&family=Ubuntu&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Lato', sans-serif;
+}
+
+body, html {
+        margin: 0;
+        padding: 0;
+        background-color: #2C3E50;
+}
+
+canvas#ghost {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        z-index: 10000;
+        pointer-events: none;
+}
+
+.page {
+        min-height: 100vh;
+        color: white;
+        text-align: center;
+}
+
+.lil-gui {
+        --width: 300px;
+        max-width: 90%;
+        --widget-height: 20px;
+        font-size: 15px;
+        --input-font-size: 15px;
+        --padding: 10px;
+        --spacing: 10px;
+        --slider-knob-width: 5px;
+        --background-color: rgba(5, 0, 15, .8);
+        --widget-color: rgba(255, 255, 255, .3);
+        --focus-color: rgba(255, 255, 255, .4);
+        --hover-color: rgba(255, 255, 255, .5);
+        --font-family: monospace;
+        z-index: 1;
+}
+
+.page .ov{
+        font-family: Varela Round, sans-serif;
+        letter-spacing: 8px;
+        text-shadow: 0 0 10px black;
+        word-spacing: 7px;
+        text-transform: uppercase;
+        padding: 20px 0px;
+        text-shadow: -6px -6px #000000, -5px -5px #000000,
+        -4px -4px #000000, -3px -3px #000000, -2px -2px #000000,
+        -1px -1px #000000, 1px 1px #000000, 2px 2px #000000,
+        3px 3px #000000, 4px 4px #000000, 5px 5px #000000,
+        6px 6px #000000, 7px 7px #000000, 8px 8px #000000,
+        9px 9px #000000, 10px 10px #000000, 11px 11px #000000,
+        12px 12px #000000, 13px 13px #000000, 14px 14px #000000
+    }
+
+    .container {
+        padding: 40px 80px;
+        height: 80vh;
+        display: flex;
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .cardWrap {
+        margin: 10px;
+        -webkit-transform: perspective(800px);
+        transform: perspective(800px);
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        cursor: pointer;
+      }
+      
+      .cardWrap:hover .cardInfo {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+      
+      .cardWrap:hover .cardInfo p {
+        opacity: 1;
+      }
+      
+      .cardWrap:hover .cardInfo,
+      .cardWrap:hover .cardInfo p {
+        -webkit-transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      
+      .cardWrap:hover .cardInfo:after {
+        -webkit-transition: 5s cubic-bezier(0.23, 1, 0.32, 1);
+        transition: 5s cubic-bezier(0.23, 1, 0.32, 1);
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+      
+      .cardWrap:hover .cardBg {
+        -webkit-transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+          opacity 5s cubic-bezier(0.23, 1, 0.32, 1);
+        transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+          opacity 5s cubic-bezier(0.23, 1, 0.32, 1);
+        opacity: 0.8;
+      }
+      
+      .cardWrap:hover .card {
+        -webkit-transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+          box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+        transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+          box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, white 0 0 0 1px,
+          rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px,
+          inset white 0 0 0 6px;
+      }
+      
+      .card {
+        position: relative;
+        -webkit-box-flex: 0;
+        flex: 0 0 240px;
+        width: 240px;
+        height: 320px;
+        background-color: #333;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px,
+          inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
+        -webkit-transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      }
+      
+      .cardBg {
+        opacity: 0.5;
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        -webkit-transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95),
+          opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95),
+          opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        pointer-events: none;
+      }
+      
+      .cardInfo {
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        color: #fff;
+        -webkit-transform: translateY(40%);
+        transform: translateY(40%);
+        -webkit-transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+      
+      .cardInfo p {
+        opacity: 0;
+        text-shadow: black 0 2px 3px;
+        -webkit-transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+      
+      .cardInfo * {
+        position: relative;
+        z-index: 1;
+      }
+      
+      .cardInfo:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        background-image: -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          from(transparent),
+          to(rgba(0, 0, 0, 0.6))
+        );
+        background-image: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+        background-blend-mode: overlay;
+        opacity: 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+        -webkit-transition: 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        transition: 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      }
+      
+      .cardInfo h1 {
+        font-family: "Playfair Display";
+        font-size: 36px;
+        font-weight: 700;
+        text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
+      }
+      .cardTile{
+        text-align: center;
+        width: 100%;
+      }
+      
